@@ -10,4 +10,12 @@ export const config = {
   links: {
     github: "https://github.com/JaumeGelabert/ui",
   },
+  components: {
+    breadcrumb: {
+      separator: "/",
+    },
+    button: {
+      isCommingSoon: true,
+    },
+  },
 };
