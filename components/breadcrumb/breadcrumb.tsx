@@ -50,7 +50,7 @@ export default function BreadcrumbComponent({
         )}
         {nLast && pathNLast.length < formattedPath.length - nLast && (
           <>
-            <p>...</p>
+            <p>*</p>
             <BreadcrumbSeparator />
           </>
         )}
