@@ -6,7 +6,6 @@ import {
   BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
 import { generatePath, uppercaseFirstLetter } from "@/lib/utils";
-import { Playwrite_BE_VLG } from "next/font/google";
 
 interface BreadcrumbComponentProps {
   baseUrl: string;
