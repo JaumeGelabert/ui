@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="flex w-full flex-col items-center bg-green-100">
+    <main className="flex w-full flex-col items-center">
       <div className="flex w-full max-w-[1580px] flex-row justify-start pt-8">
         <Sidebar />
         {children}

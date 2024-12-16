@@ -7,4 +7,7 @@ export const config = {
     ],
     sidebar: {},
   },
+  links: {
+    github: "https://github.com/JaumeGelabert/ui",
+  },
 };
