@@ -4,7 +4,7 @@ import { config } from "@/config";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import GithubSVG from "../logos/githubSvg";
+import GithubSVG from "../logos/GithubSVG";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -12,7 +12,7 @@ export default function Navbar() {
   const isCurrentPath = (href: string) => pathname.startsWith(href);
   return (
     <span className="flex w-full flex-row items-center justify-center border-b px-4 py-3">
-      <nav className="flex w-full max-w-[1580px] flex-row items-center justify-start gap-8">
+      <nav className="flex w-full max-w-[1380px] flex-row items-center justify-start gap-8">
         <Link href="/" className="text-lg font-semibold">
           ui
         </Link>

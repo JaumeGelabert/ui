@@ -13,9 +13,10 @@ export default function RootLayout({
 }>) {
   return (
     <main className="flex w-full flex-col items-center">
-      <div className="flex w-full max-w-[1580px] flex-row justify-start pt-8">
+      <div className="flex w-full max-w-[1380px] flex-row justify-start gap-20 pt-8">
         <Sidebar />
         {children}
+        <Sidebar />
       </div>
     </main>
   );
