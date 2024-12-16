@@ -5,36 +5,70 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
-import { uppercaseFirstLetter } from "@/lib/utils";
-import { generatePath } from "../../lib/utils";
+import { generatePath, uppercaseFirstLetter } from "@/lib/utils";
+import { Playwrite_BE_VLG } from "next/font/google";
 
 interface BreadcrumbComponentProps {
   baseUrl: string;
   path: string;
-  showLast?: number;
+  nLast?: number;
+  showFirst?: boolean;
 }
 
 export default function BreadcrumbComponent({
   path,
   baseUrl,
-  showLast
+  nLast = 0,
+  showFirst
 }: BreadcrumbComponentProps) {
   const splittedPath = path.split("/");
   const formattedPath = splittedPath.filter((item) => item !== "");
+  let pathNLast = formattedPath;
+  let firstElement = formattedPath[0];
+  let removedElements: string[] = [];
+
+  if (nLast && nLast <= pathNLast.length) {
+    removedElements = pathNLast.slice(0, -nLast);
+    pathNLast = pathNLast.slice(-nLast);
+    // TODO: Show this on hover "..."
+    console.log("NO VISIBLE", removedElements);
+  }
+
+  console.log("Formatted Path", formattedPath);
+  console.log("N last", pathNLast);
 
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        {formattedPath.map((item, index) => (
+        {showFirst && pathNLast.length < formattedPath.length - nLast && (
+          <span className="flex items-center gap-2">
+            <BreadcrumbLink href={generatePath(baseUrl, removedElements, 0)}>
+              {uppercaseFirstLetter(firstElement!)}
+            </BreadcrumbLink>
+            <BreadcrumbSeparator />
+          </span>
+        )}
+
+        {nLast && pathNLast.length < formattedPath.length - nLast && (
+          <>
+            <p>...</p>
+            <BreadcrumbSeparator />
+          </>
+        )}
+        {pathNLast.map((item, index) => (
           <span key={index} className="flex items-center gap-2">
             <BreadcrumbItem>
               <BreadcrumbLink
-                href={generatePath(baseUrl, formattedPath, index)}
+                href={generatePath(
+                  baseUrl,
+                  formattedPath,
+                  index + removedElements.length
+                )}
               >
-                {uppercaseFirstLetter(item)} - {index}
+                {uppercaseFirstLetter(item)}
               </BreadcrumbLink>
             </BreadcrumbItem>
-            {index !== formattedPath.length - 1 && <BreadcrumbSeparator />}
+            {index !== pathNLast.length - 1 && <BreadcrumbSeparator />}
           </span>
         ))}
       </BreadcrumbList>

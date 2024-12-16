@@ -5,6 +5,8 @@ export default function BreadcrumbPage() {
     <BreadcrumbComponent
       path="/components/breadcrumb/example"
       baseUrl="http://localhost:3000"
+      nLast={1}
+      showFirst
     />
   );
 }
