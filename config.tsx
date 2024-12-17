@@ -1,3 +1,4 @@
+import BreadcrumbComponent from "./components/lib/breadcrumb/breadcrumb";
 export const config = {
   navigation: {
     navbar: [
@@ -49,8 +50,28 @@ export const config = {
         },
       ],
       preview: {
-        
-      }
+        example: (
+          <BreadcrumbComponent
+            path="/components/breadcrumb"
+            baseUrl="http://localhost:3000"
+          />
+        ),
+        code: "CodeOfComponent",
+      },
+      examples: [
+        {
+          title: "Example 1",
+          description: "Description of example 1",
+          example: "NameOfExample1",
+          code: "CodeOfExample1",
+        },
+        {
+          title: "Example 2",
+          description: "Description of example 2",
+          example: "NameOfExample2",
+          code: "CodeOfExample2",
+        },
+      ],
     },
     button: {
       name: "Button",
@@ -60,6 +81,24 @@ export const config = {
           text: "shadcn/ui",
           href: "https://ui.shadcn.com/docs/components/button",
           type: "external",
+        },
+      ],
+      preview: {
+        example: "NameOfComponent",
+        code: "CodeOfComponent",
+      },
+      examples: [
+        {
+          title: "Example 1",
+          description: "Description of example 1",
+          example: "NameOfExample1",
+          code: "CodeOfExample1",
+        },
+        {
+          title: "Example 2",
+          description: "Description of example 2",
+          example: "NameOfExample2",
+          code: "CodeOfExample2",
         },
       ],
     },

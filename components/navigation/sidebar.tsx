@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Sidebar() {
   const data = config.navigation.sidebar;
   return (
-    <nav className="flex w-56 flex-col items-start justify-start gap-1 pr-4">
+    <nav className="flex w-72 flex-col items-start justify-start gap-1 pr-4">
       {data.map(({ groupName, elements }) => (
         <>
           <p className="mb-1 mt-10 font-mono text-xs font-semibold first:mt-0">

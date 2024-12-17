@@ -1,3 +1,4 @@
+import OnThisPage from "@/components/navigation/OnThisPage";
 import Sidebar from "@/components/navigation/sidebar";
 import type { Metadata } from "next";
 
@@ -16,7 +17,6 @@ export default function RootLayout({
       <div className="flex w-full max-w-[1380px] flex-row justify-start gap-20 pt-8">
         <Sidebar />
         {children}
-        <Sidebar />
       </div>
     </main>
   );
