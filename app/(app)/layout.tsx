@@ -1,20 +1,22 @@
-import Navbar from "@/components/navigation/navbar";
+import Footer from "@/components/navigation/Footer";
+import Navbar from "@/components/navigation/Navbar";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "ui",
-  description: "Components I use"
+  description: "Components I use",
 };
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <main className="flex flex-col items-center w-full">
+    <main className="flex w-full flex-col items-center">
       <Navbar />
       {children}
+      <Footer />
     </main>
   );
 }

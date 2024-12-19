@@ -10,11 +10,5 @@ export function uppercaseFirstLetter(str: string) {
 }
 
 export function generatePath(baseUrl: string, path: string[], index: number) {
-  console.log(`
-    Base URL: ${baseUrl}
-    Path: ${path}
-    Index: ${index}
-    Final URL: ${baseUrl + "/" + path.slice(0, index + 1).join("/")}
-    `);
   return baseUrl + "/" + path.slice(0, index + 1).join("/");
 }

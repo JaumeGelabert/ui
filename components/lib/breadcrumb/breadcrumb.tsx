@@ -1,9 +1,10 @@
 import {
   Breadcrumb,
+  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbSeparator
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { generatePath, uppercaseFirstLetter } from "@/lib/utils";
 
@@ -17,29 +18,29 @@ interface BreadcrumbComponentProps {
 export default function BreadcrumbComponent({
   path,
   baseUrl,
-  nLast = 0,
-  showFirst
+  nLast,
+  showFirst,
 }: BreadcrumbComponentProps) {
   const splittedPath = path.split("/");
   const formattedPath = splittedPath.filter((item) => item !== "");
-  let pathNLast = formattedPath;
-  let firstElement = formattedPath[0];
+  const firstElement = formattedPath[0];
   let removedElements: string[] = [];
+  let pathNLast = formattedPath;
 
-  if (nLast && nLast <= pathNLast.length) {
-    removedElements = pathNLast.slice(0, -nLast);
-    pathNLast = pathNLast.slice(-nLast);
-    // TODO: Show this on hover "..."
-    console.log("NO VISIBLE", removedElements);
+  if (nLast && nLast <= formattedPath.length) {
+    removedElements = formattedPath.slice(0, -nLast);
+    pathNLast = formattedPath.slice(-nLast);
   }
 
-  console.log("Formatted Path", formattedPath);
-  console.log("N last", pathNLast);
+  // Excluir el primer elemento si `showFirst` es true
+  if (showFirst) {
+    pathNLast = pathNLast.filter((item) => item !== firstElement);
+  }
 
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        {showFirst && pathNLast.length < formattedPath.length - nLast && (
+        {showFirst && (
           <span className="flex items-center gap-2">
             <BreadcrumbLink href={generatePath(baseUrl, removedElements, 0)}>
               {uppercaseFirstLetter(firstElement!)}
@@ -47,9 +48,9 @@ export default function BreadcrumbComponent({
             <BreadcrumbSeparator />
           </span>
         )}
-        {nLast && pathNLast.length < formattedPath.length - nLast && (
+        {nLast && removedElements.length > 0 && (
           <>
-            <p>*</p>
+            <BreadcrumbEllipsis className="mr-0 w-fit" />
             <BreadcrumbSeparator />
           </>
         )}
@@ -60,7 +61,7 @@ export default function BreadcrumbComponent({
                 href={generatePath(
                   baseUrl,
                   formattedPath,
-                  index + removedElements.length
+                  index + removedElements.length,
                 )}
               >
                 {uppercaseFirstLetter(item)}

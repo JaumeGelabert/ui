@@ -11,8 +11,8 @@ export default function Navbar() {
   const navbarData = config.navigation.navbar;
   const isCurrentPath = (href: string) => pathname.startsWith(href);
   return (
-    <span className="flex w-full flex-row items-center justify-center border-b px-4 py-3">
-      <nav className="flex w-full max-w-[1380px] flex-row items-center justify-start gap-8">
+    <span className="fixed top-0 z-50 flex w-full flex-row items-center justify-center border-b bg-white bg-opacity-60 px-4 py-3 backdrop-blur-md">
+      <nav className="z-50 flex w-full max-w-[1380px] flex-row items-center justify-start gap-8">
         <Link href="/" className="text-lg font-semibold">
           ui
         </Link>

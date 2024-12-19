@@ -19,7 +19,7 @@ export default async function ComponentsPage({
   const component = config.components[name as keyof typeof config.components];
   return (
     <>
-      <div className="flex w-full flex-col items-start justify-start">
+      <div className="z-10 flex w-full flex-col items-start justify-start">
         <BreadcrumbComponent
           path={`/components/${component.name}`}
           baseUrl="http://localhost:3000"
@@ -41,25 +41,38 @@ export default async function ComponentsPage({
         </span>
         <ExampleTabs tabs={component.preview} />
         <div className="mt-10 w-full">
-          <p className="text-xl font-semibold">Installation</p>
-          <p className="mt-1">
-            This is how you should proceed in case you wanna download and/or use
-            the component.
+          <p className="scroll-mt-20 text-xl font-semibold" id="installation">
+            Installation
+          </p>
+          <p className="mt-1 rounded-lg border bg-zinc-50 py-6 text-center text-xs text-zinc-500">
+            Still working on this...
           </p>
         </div>
         <div className="mt-10 w-full">
-          <p className="text-xl font-semibold">Examples</p>
-          <p className="mt-1">
-            This is how you should proceed in case you wanna download and/or use
-            the component.
+          <p className="scroll-mt-20 text-xl font-semibold" id="props">
+            Props
           </p>
-          {component.examples.map(({ title, description, example, code }) => (
-            <span className="mt-10 flex flex-col">
-              <p className="font-semibold">{title}</p>
-              <p className="mb-2 text-zinc-500">{description}</p>
-              <ExampleTabs tabs={{ example, code }} />
-            </span>
-          ))}
+          <p className="mt-1 rounded-lg border bg-zinc-50 py-6 text-center text-xs text-zinc-500">
+            Still working on this...
+          </p>
+        </div>
+        <div className="mt-10 w-full">
+          <p className="scroll-mt-20 text-xl font-semibold" id="examples">
+            Examples
+          </p>
+          {component.examples.map(
+            ({ title, description, example, code, id }, index) => (
+              <span
+                key={index}
+                className="mt-10 flex scroll-mt-20 flex-col"
+                id={id}
+              >
+                <p className="font-semibold">{title}</p>
+                <p className="mb-2 text-zinc-500">{description}</p>
+                <ExampleTabs tabs={{ example, code }} />
+              </span>
+            ),
+          )}
         </div>
       </div>
       <OnThisPage component={name as keyof typeof config.components} />
