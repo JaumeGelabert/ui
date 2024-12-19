@@ -17,18 +17,30 @@ export default function Sidebar() {
             className="mb-1 mt-10 flex w-full flex-col items-start justify-start gap-1 first:mt-0"
           >
             <p className="mb-1 font-mono text-xs font-semibold">{groupName}</p>
-            {elements.map(({ text, href }, index) => (
-              <Link
-                key={index}
-                href={href}
-                className={cn(
-                  "w-full rounded-lg px-2 py-1 text-sm text-zinc-500 hover:bg-zinc-100",
-                  pathName === href && "bg-zinc-100 text-zinc-800",
-                )}
-              >
-                {text}
-              </Link>
-            ))}
+            {elements.map(({ text, href, comingSoon }, index) =>
+              comingSoon ? (
+                <span
+                  key={index}
+                  className="flex w-full cursor-not-allowed flex-row items-center justify-start rounded-lg px-2 py-1 text-sm text-zinc-300"
+                >
+                  <p>{text}</p>
+                  <span className="ml-2 rounded-md bg-red-500 px-1.5 py-0.5 text-xs text-white">
+                    Soon
+                  </span>
+                </span>
+              ) : (
+                <Link
+                  key={index}
+                  href={href}
+                  className={cn(
+                    "w-full rounded-lg px-2 py-1 text-sm text-zinc-500 hover:bg-zinc-100",
+                    pathName === href && "bg-zinc-100 text-zinc-800",
+                  )}
+                >
+                  {text}
+                </Link>
+              ),
+            )}
           </span>
         ))}
       </span>
