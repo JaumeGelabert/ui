@@ -4,9 +4,9 @@ import Command from "./components/utils/Command";
 export const config = {
   navigation: {
     navbar: [
-      { text: "Components", href: "/components" },
-      { text: "Docs", href: "/docs" },
-      { text: "Roadmap", href: "/roadmap" },
+      { text: "Components", comingSoon: false, href: "/components" },
+      { text: "Docs", comingSoon: false, href: "/docs" },
+      { text: "Roadmap", comingSoon: false, href: "/roadmap" },
     ],
     sidebar: [
       {
@@ -14,10 +14,12 @@ export const config = {
         elements: [
           {
             text: "shadcn/ui",
+            comingSoon: false,
             href: "/docs/shadcnui",
           },
           {
             text: "Introduction",
+            comingSoon: false,
             href: "/docs/introduction",
           },
         ],
@@ -27,7 +29,13 @@ export const config = {
         elements: [
           {
             text: "Breadcrumb",
+            comingSoon: false,
             href: "/components/breadcrumb",
+          },
+          {
+            text: "Button",
+            comingSoon: true,
+            href: "",
           },
         ],
       },
