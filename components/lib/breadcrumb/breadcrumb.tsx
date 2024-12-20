@@ -6,7 +6,7 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { generatePath, uppercaseFirstLetter } from "@/lib/utils";
+import { cn, generatePath, uppercaseFirstLetter } from "@/lib/utils";
 
 interface BreadcrumbComponentProps {
   baseUrl: string;
@@ -63,6 +63,7 @@ export default function BreadcrumbComponent({
                   formattedPath,
                   index + removedElements.length,
                 )}
+                className={cn(index === pathNLast.length - 1 && "text-black")}
               >
                 {uppercaseFirstLetter(item)}
               </BreadcrumbLink>

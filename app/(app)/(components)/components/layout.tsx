@@ -1,4 +1,4 @@
-import Sidebar from "@/components/navigation/Sidebar";
+import Sidebar from "@/components/navigation/sidebar";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="flex w-full flex-col items-center mt-20">
+    <main className="mt-20 flex w-full flex-col items-center">
       <div className="flex w-full max-w-[1380px] flex-row justify-start gap-20 pt-8">
         <Sidebar />
         {children}
